@@ -1,19 +1,43 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductComponent } from './product/product.component';
 import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './product/product.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { SliderComponent } from './slider/slider.component';
+import { FormsModule } from '@angular/forms';
 import { ServicesService } from './services.service';
+import { ProductAddComponent } from './product-add/product-add.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductManagerComponent } from './product-manager/product-manager.component';
+
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, ProductListComponent, ProductComponent, CategoryComponent, SliderComponent ],
-  bootstrap:    [ AppComponent ],
-  providers: [ServicesService]
+  declarations: [
+    AppComponent,
+    CategoryComponent,
+    ProductComponent,
+    ProductListComponent,
+    SliderComponent,
+    ProductAddComponent,
+    HomeComponent,
+    NotFoundComponent,
+    ProductDetailComponent,
+    ProductManagerComponent,
+    
+   
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+  providers: [ServicesService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
+
