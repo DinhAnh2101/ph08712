@@ -10,11 +10,11 @@ import { ServicesService } from '../services.service'
 })
 export class ProductListComponent implements OnInit {
 
-  products = data;
-  selected : Product[];
+  selected: Product;
+  products: Product[];
 
   constructor(
-    private servicesService : ServicesService
+   private servicesService : ServicesService
   ) { 
     console.log('constructor')
   }
@@ -24,21 +24,13 @@ export class ProductListComponent implements OnInit {
   }
  
   getProducts(){
-    this.products = this.servicesService.getProducts();
+   this.servicesService.getProducts().subscribe(data => {
+     console.log(data);
+     this.products = data;
+    });
   }
   removeItem(id){
     this.products = this.servicesService.removeProduct(id);
-    
+    // this.products = this.products.filter(product => product.id != id);
   }
-  showDetail(product){
-      console.log(product);
-      this.selected = product;
-    }
-  
 }
-
-
-
-  
- 
-

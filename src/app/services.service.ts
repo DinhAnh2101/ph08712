@@ -7,20 +7,28 @@ import { Observable } from 'rxjs';
 )
 
 export class ServicesService {
-  api = 'http://5c999ea71a4c360014a0ff5b.mockapi.io/products';
-    products = data;
-    constructor( private http: HttpClient){}
-    getProducts(): Observable<Product[]>{
+   api = 'https://5c999ea71a4c360014a0ff5b.mockapi.io/products';
+  products = data;
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(this.api);
   }
-     getProduct(id){
-    return this.products.find(product => product.id == id);
+  getProduct(id): Observable<Product>{
+    return this.http.get<Product>(`${this.api}/${id}`);
+    // return this.products.find(product => product.id == id);
   }
-    removeProduct(id){
-        return this.products.filter(product => product.id !=id);
-    }
-     addProduct(product){ // them san pham
-    let newObj = { id: 6, ...product};
-    this.products.push(product)
+  removeProduct(id){
+    return this.products.filter(product => product.id !== id);
+  }
+  addProduct(product){
+    const newProduct = { id: 5, ...product};
+    this.products.push(newProduct);
+    console.log(this.products)
+  }
+  updateProduct(product){
+     return this.http.put<Product>(`${this.api}/${product.id}`, product);
   }
 }
